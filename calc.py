@@ -29,7 +29,7 @@ def zapros_op():
             return op
         else:
             print("Вы ввели не сущиствующий оператор, повторите")
- 
+
 # Функция обрабатывающая полученные значения
 def result(pervoe_chislo, vtoroe_chislo):
     def print_result(a, oper, b, res):      # Функция которая выводит результат
@@ -67,12 +67,12 @@ def result(pervoe_chislo, vtoroe_chislo):
     elif oper == "%":
         res = pervoe_chislo % vtoroe_chislo
     elif oper == "/":
-        if second == 0:
+        if vtoroe_chislo == 0:
             res = "нельзя делить на 0 *("
         else:
             res = pervoe_chislo / vtoroe_chislo
     elif oper == "*":
-        res = first * second
+        res = pervoe_chislo * vtoroe_chislo
     print(print_result(pervoe_chislo, oper, vtoroe_chislo, res))
 
 
