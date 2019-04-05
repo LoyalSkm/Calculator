@@ -17,6 +17,7 @@ def zapros_val(mes):
             return val
         except ValueError:
             print("Вы не ввели число, попробуйте снова")
+            
 # Тут запрашиваю оператор и проверяю может ли мой калькулятор работать с получеными оператором
 def zapros_op():
     empty_list = ""
@@ -29,8 +30,9 @@ def zapros_op():
         else:
             print("Вы ввели не сущиствующий оператор, повторите")
     print(len(list))
+
 # Функция обрабатывающая полученные значения
-def result(a, b):
+def result(pervoe_chislo, vtoroe_chislo):
     def print_result(a, oper, b, res):      # Функция которая выводит результат
         if oper == "sin" or oper == "cos" or oper == "tan" or oper == "√":
             fun ="{} {} = {}".format(oper, a, res)
@@ -40,39 +42,39 @@ def result(a, b):
             return fun
 
     if oper == "sin":
-        res = math.sin(int(a))
-        print(print_result(a, oper, 1, res))
+        res = math.sin(int(pervoe_chislo))
+        print(print_result(pervoe_chislo, oper, 1, res))
         sys.exit()
     elif oper == "cos":
-        res = math.cos(int(a))
-        print(print_result(a, oper, 1, res))
+        res = math.cos(int(pervoe_chislo))
+        print(print_result(pervoe_chislo, oper, 1, res))
         sys.exit()
     elif oper == "tan":
-        res = math.tan(int(a))
-        print(print_result(a, oper, 1, res))
+        res = math.tan(int(pervoe_chislo))
+        print(print_result(pervoe_chislo, oper, 1, res))
         sys.exit()
     elif oper == "√":
-        res = math.sqrt(int(a))
-        print(print_result(a, oper, 1, res))
+        res = math.sqrt(int(pervoe_chislo))
+        print(print_result(pervoe_chislo, oper, 1, res))
         sys.exit()
     elif oper == "//":
-        res = a // b
+        res = pervoe_chislo // vtoroe_chislo
     elif oper == "**":
-        res = a ** b
+        res = pervoe_chislo ** vtoroe_chislo
     elif oper == "+":
-        res = a + b
+        res = pervoe_chislo + vtoroe_chislo
     elif oper == "-":
-        res = a - b
+        res = pervoe_chislo - vtoroe_chislo
     elif oper == "%":
-        res = a % b
+        res = pervoe_chislo % vtoroe_chislo
     elif oper == "/":
         if second == 0:
             res = "нельзя делить на 0 *("
         else:
-            res = a / b
+            res = pervoe_chislo / vtoroe_chislo
     elif oper == "*":
         res = first * second
-    print(print_result(a, oper, b, res))
+    print(print_result(pervoe_chislo, oper, vtoroe_chislo, res))
 
 
 
