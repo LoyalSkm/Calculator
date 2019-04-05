@@ -1,18 +1,15 @@
 print('''
-         С помощю калькулятора можна:  + - Сумирывать
-                                       - - Вычитать
-                                       / - Делить
-                                      // - Возвращать не полное частное от деления
-                                       * - Умножать
-                                      ** - Возводить в степень
-                                       √ - Находить корень квадратный
-                                       % - Делить по модул
-                                      sin - Находить синус
-                                      cos - Находить косинус
-                                      tan - Находить Тангенс
+                    С помощю калькулятора можна:                                  
+                                    
++ - Сумирывать                                  √ - Находить корень квадратный
+- - Вычитать                                    % - Делить по модул
+/ - Делить                                      sin - Находить синус
+// - Возвращать не полное частное от деления    cos - Находить косинус
+* - Умножать                                    tan - Находить Тангенс
+** - Возводить в степень
                                                                   ''')
 import sys, math
-#тут я принимаю число пользователя, проверяю его на float
+# Тут я принимаю число пользователя, проверяю его на float
 def zapros_val(mes):
     while True:
         try:
@@ -20,7 +17,7 @@ def zapros_val(mes):
             return val
         except ValueError:
             print("Вы не ввели число, попробуйте снова")
-#тут запрашиваю оператор и проверяю может ли мой калькулятор работать с получеными оператором
+# Тут запрашиваю оператор и проверяю может ли мой калькулятор работать с получеными оператором
 def zapros_op():
     empty_list = ""
     list  = ["+", "-", "/", "//", "*", "**", "√", "%", "sin", "cos", "tan"]
@@ -32,23 +29,31 @@ def zapros_op():
         else:
             print("Вы ввели не сущиствующий оператор, повторите")
     print(len(list))
-#Функция обрабатывающая полученные значения
+# Функция обрабатывающая полученные значения
 def result(a, b):
+    def print_result(a, oper, b, res):      # Функция которая выводит результат
+        if oper == "sin" or oper == "cos" or oper == "tan" or oper == "√":
+            fun ="{} {} = {}".format(oper, a, res)
+            return fun
+        else:
+            fun = "{} {} {} = {}".format(a, oper, b, res)
+            return fun
+
     if oper == "sin":
-        res1 = str(math.sin(int(a)))
-        print("{} {} = {}".format(oper, a, res1))
+        res = math.sin(int(a))
+        print(print_result(a, oper, 1, res))
         sys.exit()
     elif oper == "cos":
-        res1 = str(math.cos(int(a)))
-        print ("{} {} = {}".format(oper, a, res1))
+        res = math.cos(int(a))
+        print(print_result(a, oper, 1, res))
         sys.exit()
     elif oper == "tan":
-        res1 = str(math.tan(int(a)))
-        print ("{} {} = {}".format(oper, a, res1))
+        res = math.tan(int(a))
+        print(print_result(a, oper, 1, res))
         sys.exit()
     elif oper == "√":
-        res1 = str(math.sqrt(int(a)))
-        print ("{} {} = {}".format(oper, a, res1))
+        res = math.sqrt(int(a))
+        print(print_result(a, oper, 1, res))
         sys.exit()
     elif oper == "//":
         res = a // b
@@ -62,12 +67,12 @@ def result(a, b):
         res = a % b
     elif oper == "/":
         if second == 0:
-            res = "ZeroDivisionError"
+            res = "нельзя делить на 0 *("
         else:
             res = a / b
     elif oper == "*":
         res = first * second
-    print("{} {} {} = {}".format(a, oper, b, res))
+    print(print_result(a, oper, b, res))
 
 
 
