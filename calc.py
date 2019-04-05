@@ -8,11 +8,9 @@ print('''
                          *  - Умножать
                          ** - Возводить в степень
                          %  - Делить по модул
-                         cos - Синус
-                         sin - Косинус
-                         tan - Тангенс
-                         ctg - Котангенс
-                                                                 ''')
+                         cos - Находить синус
+                         sin - Находить косинус
+                                                                  ''')
 import sys, math
 
 def zapros_val(mes):
@@ -24,54 +22,51 @@ def zapros_val(mes):
             print("Вы не ввели число, попробуйте снова")
 
 def zapros_op():
-    mes = ""
-    op  = ("+", "-", "/", "//", "*", "**", "%", "sin", "cos")
-    while mes not in op:
+    empty_list = ""
+    list  = ["+", "-", "/", "//", "*", "**", "%", "sin", "cos"]
+    while empty_list not in list:
         o = input("Укажите операцию: ")
-        oper = o.strip()  # удаляем пробелы
-        if oper in op:
-            return oper
+        op = o.strip()  # удаляем пробелы
+        if op in list:
+            return op
         else:
             print("Вы ввели не сущиствующий оператор, повторите")
+    print(len(list))
 
-def result():
-    for i in oper:
-        if oper == "sin":
-            res1 = str(math.sin(int(first)))
-            print("{} {} = {}".format(oper, first, res1))
-            sys.exit()
-        elif oper == "cos":
-            res1 = str(math.cos(int(first)))
-            print ("{} {} = {}".format(oper, first, res1))
-            sys.exit()
-        if oper == "//":
-            res = first // second
-        elif oper == "**":
-            res = first ** second
-        elif oper == "+":
-            res = first + second
-        elif oper == "-":
-            res = first - second
-        elif oper == "%":
-            res = first % second
-        elif oper == "/":
-            if second == 0:
-                res = "ZeroDivisionError"
-            else:
-                res = first / second
-        elif oper == "*":
-            res = first * second
-        print("{} {} {} = {}".format(first, oper, second, res))
+def result(a, b):
+    if oper == "sin":
+        res1 = str(math.sin(int(a)))
+        print("{} {} = {}".format(oper, a, res1))
+        sys.exit()
+    elif oper == "cos":
+        res1 = str(math.cos(int(a)))
+        print ("{} {} = {}".format(oper, a, res1))
+        sys.exit()
+    elif oper == "//":
+        res = a // b
+    elif oper == "**":
+        res = a ** b
+    elif oper == "+":
+        res = a + b
+    elif oper == "-":
+        res = a - b
+    elif oper == "%":
+        res = a % b
+    elif oper == "/":
+        if second == 0:
+            res = "ZeroDivisionError"
+        else:
+            res = a / b
+    elif oper == "*":
+        res = first * second
+    print("{} {} {} = {}".format(a, oper, b, res))
+
+
 
 first = zapros_val("Введите первое число: ")
 oper = zapros_op()
-# if oper == "sin":
-#     res1 = str(math.sin(int(first)))
-#     print("{} {} = {}".format(oper, first, res1))
-#     sys.exit()
-# elif oper == "cos":
-#     res1 = str(math.cos(int(first)))
-#     print("{} {} = {}".format(oper, first, res1))
-#     sys.exit()
-second = (zapros_val("Введите второе число: "))
-res = result()
+if oper == "sin" or oper == "cos":
+    res = result(first, 0)
+else:
+    second = (zapros_val("Введите второе число: "))
+    res = result(first, second)
