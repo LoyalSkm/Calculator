@@ -7,49 +7,71 @@ print('''
                          // - Возвращать не полное частное от деления
                          *  - Умножать
                          ** - Возводить в степень
-                         %  - Делить по модулю   
-                                            ''')
-while True:
-    try:
-        first = float(input("Укажите 1рвое число: "))
-        break
-    except ValueError:
-        print("Вы не ввели число, попробуйте снова")
+                         %  - Делить по модул
+                         cos - Синус
+                         sin - Косинус
+                         tan - Тангенс
+                         ctg - Котангенс
+                                                                 ''')
+import sys, math
 
-oper = ""
-op = ("+", "-", "/", "//", "*", "**", "%")
-while oper not in op:
-    o = input("Укажите операцию: ")
-    oper = o.strip()
-    if oper in op:
-        break
-    else:
-        print("Вы ввели не сущиствующий оператор, повторите")
+def zapros_val(mes):
+    while True:
+        try:
+            val = float(input(mes))
+            return val
+        except ValueError:
+            print("Вы не ввели число, попробуйте снова")
 
-while True:
-    try:
-        second = float(input("Укажите 2рое читсло: "))
-        break
-    except ValueError:
-        print("Вы не ввели число, попробуйте снова")
-
-for i in oper:
-    if oper == "//":
-        res = first // second
-    elif oper == "**":
-        res = first ** second
-    elif oper == "+":
-        res = first + second
-    elif oper == "-":
-        res = first - second
-    elif oper == "%":
-        res = first % second
-    elif oper == "/":
-        if second == 0:
-            res = "ZeroDivisionError"
+def zapros_op():
+    mes = ""
+    op  = ("+", "-", "/", "//", "*", "**", "%", "sin", "cos")
+    while mes not in op:
+        o = input("Укажите операцию: ")
+        oper = o.strip()  # удаляем пробелы
+        if oper in op:
+            return oper
         else:
-            res = first / second
-    elif oper == "*":
-        res = first * second
+            print("Вы ввели не сущиствующий оператор, повторите")
 
-print("{} {} {} = {}".format(first, oper, second, res))
+def result():
+    for i in oper:
+        if oper == "sin":
+            res1 = str(math.sin(int(first)))
+            print("{} {} = {}".format(oper, first, res1))
+            sys.exit()
+        elif oper == "cos":
+            res1 = str(math.cos(int(first)))
+            print ("{} {} = {}".format(oper, first, res1))
+            sys.exit()
+        if oper == "//":
+            res = first // second
+        elif oper == "**":
+            res = first ** second
+        elif oper == "+":
+            res = first + second
+        elif oper == "-":
+            res = first - second
+        elif oper == "%":
+            res = first % second
+        elif oper == "/":
+            if second == 0:
+                res = "ZeroDivisionError"
+            else:
+                res = first / second
+        elif oper == "*":
+            res = first * second
+        print("{} {} {} = {}".format(first, oper, second, res))
+
+first = zapros_val("Введите первое число: ")
+oper = zapros_op()
+# if oper == "sin":
+#     res1 = str(math.sin(int(first)))
+#     print("{} {} = {}".format(oper, first, res1))
+#     sys.exit()
+# elif oper == "cos":
+#     res1 = str(math.cos(int(first)))
+#     print("{} {} = {}".format(oper, first, res1))
+#     sys.exit()
+second = (zapros_val("Введите второе число: "))
+res = result()
