@@ -12,7 +12,7 @@ print('''
                          sin - Находить косинус
                                                                   ''')
 import sys, math
-
+#тут я принимаю число пользователя, проверяю его на float
 def zapros_val(mes):
     while True:
         try:
@@ -20,7 +20,7 @@ def zapros_val(mes):
             return val
         except ValueError:
             print("Вы не ввели число, попробуйте снова")
-
+#тут запрашиваю оперант и проверяю может ли мой калькулятор работать с получеными оперантом
 def zapros_op():
     empty_list = ""
     list  = ["+", "-", "/", "//", "*", "**", "%", "sin", "cos"]
@@ -32,7 +32,7 @@ def zapros_op():
         else:
             print("Вы ввели не сущиствующий оператор, повторите")
     print(len(list))
-
+#Функция обрабатывающая полученные значения 
 def result(a, b):
     if oper == "sin":
         res1 = str(math.sin(int(a)))
