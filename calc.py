@@ -7,6 +7,7 @@ print('''
                          // - Возвращать не полное частное от деления
                          *  - Умножать
                          ** - Возводить в степень
+                         √  - находить корень квадратный
                          %  - Делить по модул
                          sin - Находить синус
                          cos - Находить косинус
@@ -23,7 +24,7 @@ def zapros_val(mes):
 #тут запрашиваю оператор и проверяю может ли мой калькулятор работать с получеными оператором
 def zapros_op():
     empty_list = ""
-    list  = ["+", "-", "/", "//", "*", "**", "%", "sin", "cos"]
+    list  = ["+", "-", "/", "//", "*", "**", "√", "%", "sin", "cos"]
     while empty_list not in list:
         o = input("Укажите операцию: ")
         op = o.strip()  # удаляем пробелы
@@ -40,6 +41,10 @@ def result(a, b):
         sys.exit()
     elif oper == "cos":
         res1 = str(math.cos(int(a)))
+        print ("{} {} = {}".format(oper, a, res1))
+        sys.exit()
+    elif oper == "√":
+        res1 = str(math.sqrt(int(a)))
         print ("{} {} = {}".format(oper, a, res1))
         sys.exit()
     elif oper == "//":
@@ -65,7 +70,7 @@ def result(a, b):
 
 first = zapros_val("Введите первое число: ")
 oper = zapros_op()
-if oper == "sin" or oper == "cos":
+if oper == "sin" or oper == "cos" or oper == "√":
     res = result(first, 0)
 else:
     second = (zapros_val("Введите второе число: "))
