@@ -21,11 +21,11 @@ def zapros_val(mes):
 # Тут запрашиваю оператор и проверяю может ли мой калькулятор работать с получеными оператором
 def zapros_op():
     empty_list = ""
-    list  = ["+", "-", "/", "//", "*", "**", "√", "%", "sin", "cos", "tan"]
-    while empty_list not in list:
+    op_list  = ["+", "-", "/", "//", "*", "**", "√", "%", "sin", "cos", "tan"]
+    while empty_list not in op_list:
         o = input("Укажите операцию: ")
         op = o.strip()  # удаляем пробелы
-        if op in list:
+        if op in op_list:
             return op
         else:
             print("Вы ввели не сущиствующий оператор, повторите")
