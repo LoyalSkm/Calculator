@@ -67,10 +67,7 @@ def result(pervoe_chislo, vtoroe_chislo):
     elif oper == "%":
         res = pervoe_chislo % vtoroe_chislo
     elif oper == "/":
-        if vtoroe_chislo == 0:
-            res = "нельзя делить на 0 *("
-        else:
-            res = pervoe_chislo / vtoroe_chislo
+        res = pervoe_chislo / vtoroe_chislo
     elif oper == "*":
         res = pervoe_chislo * vtoroe_chislo
     print(print_result(pervoe_chislo, oper, vtoroe_chislo, res))
@@ -82,5 +79,8 @@ oper = zapros_op()
 if oper == "sin" or oper == "cos" or oper == "tan" or oper == "√":
     res = result(first, 0)
 else:
-    second = (zapros_val("Введите второе число: "))
-    res = result(first, second)
+    try:
+        second = (zapros_val("Введите второе число: "))
+        res = result(first, second)
+    except ZeroDivisionError:
+        print("Деление на 0!")
